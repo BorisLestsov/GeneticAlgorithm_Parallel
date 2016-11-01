@@ -5,11 +5,11 @@ Indiv::Indiv():
     chromosome()
 {}
 
-Indiv::Indiv(const vector<bool>& v):
+Indiv::Indiv(const vector<char> &v):
     chromosome(v)
 {}
 
-Indiv::Indiv(const initializer_list<bool>& list):
+Indiv::Indiv(const initializer_list<char>& list):
     chromosome(list)
 {}
 
@@ -46,10 +46,14 @@ void Indiv::mutate() {
 ostream &operator<<(ostream &o, const Indiv& indiv) {
     o << "Fitness: " << indiv.fitness << endl;
     for (uint i = 0; i < indiv.chromosome.size(); ++i)
-        o << setw(2) << indiv.chromosome[i];
+        o << setw(2) << (int) indiv.chromosome[i];
     return o;
 }
 
 uint Indiv::size() const {
     return (uint) chromosome.size();
+}
+
+const char* Indiv::get_chromosome() const {
+    return chromosome.data();
 }

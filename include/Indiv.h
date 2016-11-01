@@ -7,7 +7,7 @@
 
 using namespace std;
 
-typedef vector<bool> Chromosome;
+typedef vector<char> Chromosome;
 
 class Indiv {
 
@@ -16,10 +16,10 @@ class Indiv {
 
 public:
     Indiv();
-    Indiv(const vector<bool>& v);
-    Indiv(const initializer_list<bool>& list);
+    Indiv(const vector<char> &v);
+    Indiv(const initializer_list<char>& list);
     Indiv(const Indiv& indiv_p);
-    Indiv(const Indiv& par1, const Indiv& par2, uint pos);    // Crossover constructor, LOL
+    Indiv(const Indiv& par1, const Indiv& par2, uint pos);
 
     bool get_gen(uint i) const;
     uint size() const;
@@ -28,6 +28,8 @@ public:
     void setFitness(double fitness);
 
     void mutate();
+
+    const char* get_chromosome() const;
 
     friend ostream& operator<<(ostream& o, const Indiv& indiv);
 };
